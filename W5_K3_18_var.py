@@ -1,3 +1,5 @@
+# This is to code for computing maximum independent set in W_5 box K_3 using 18 variables, ie we specify each Wheel within the larger triangle structure
+
 import numpy as np; import scipy as sp; import networkx as nx;
 import matplotlib.pyplot as plt; import csv; import random; 
 import gurobipy as gp
