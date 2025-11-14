@@ -63,22 +63,19 @@ for l in range(2,k-1): # to find profiles, this sets of value of ind set on A1, 
 
 # With Maximal profiles, we compute X_f
 
-m = gp.Model("chi_f")
+m = gp.Model("chi_f of Wheel^2")
 
 # adding variables a,b,c,t
-a = m.addVar(name="a")
-b = m.addVar(name="b")
-c = m.addVar(name="c")
-t = m.addVar(name="t")
+a = m.addVar(name="a");b = m.addVar(name="b");c = m.addVar(name="c");t = m.addVar(name="t")
 
 
 # Hahn-Hell-Poljak Maximal profile LP
 m.setObjective(t,GRB.MINIMIZE)
 # Constraints for the LP
 for l in range(len(MPr)):
-    m.addConstr(a*MPr[l][0] + b*MPr[l][1] + c*MPr[l][2] <=  t) 
+    m.addConstr(a*MPr[l][0] + b*MPr[l][1] + c*MPr[l][2] <=  t) # These are profile constraints 
 
-m.addConstr(a + 2*(k-1)*b + (k-1)*(k-1)*c == 1)
-m.addConstr(a>= 0); m.addConstr(b >= 0); m.addConstr(c>= 0); m.addConstr(t >= 0)
+m.addConstr(a + 2*(k-1)*b + (k-1)*(k-1)*c == 1) # This corresponds to normalization constraint
+m.addConstr(a>= 0); m.addConstr(b >= 0); m.addConstr(c>= 0); m.addConstr(t >= 0) # non-negative constraint
 
 m.optimize()
