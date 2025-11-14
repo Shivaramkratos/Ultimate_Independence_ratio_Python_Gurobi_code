@@ -62,7 +62,7 @@ with gp.Env(params=options) as env:
         m.addConstr(x[i,:] + x[i+6,:] <= jn)
 
     for i in range(0,6):
-        for j in range(1,7):
+        for j in range(1,6):
             m.addConstr(x[i,:] + x[i + 6*j, :] <=jn) 
 
 # This is for Specific independent set
