@@ -11,8 +11,7 @@ options = {
 from gurobipy import GRB
 
 k = 6;
-w = nx.wheel_graph(k); g = w;  
-#g = nx.cartesian_product(w,w);
+w = nx.wheel_graph(k); g = nx.cartesian_product(w,w);
 n = nx.number_of_nodes(g); e = nx.number_of_edges(g);
 g = nx.convert_node_labels_to_integers(g, first_label=0, ordering='default', label_attribute=None); 
 B = nx.incidence_matrix(g); B = np.abs(B); 
@@ -66,29 +65,61 @@ with gp.Env(params=options) as env:
             m.addConstr(x[i,:] + x[i + 6*j, :] <=jn) 
 
 # This is for Specific independent set
-    #m.addConstr(x[0,:].sum() == 9)
+    m.addConstr(x[0,:].sum() >= 8)
     #m.addConstr(x[1,:].sum() == 11)
     #m.addConstr(x[2,:].sum() == 9)
     #m.addConstr(x[3,:].sum() == 9)
     #m.addConstr(x[4,:].sum() == 11)
     #m.addConstr(x[5,:].sum() == 9)
-    #m.addConstr(x[0,:].sum() + x[1,:].sum() + x[2,:].sum() + x[3,:].sum() + x[4,:].sum() + x[5,:].sum()== 57)
+    m.addConstr(x[0,:].sum() + x[1,:].sum() + x[2,:].sum() +
+                x[3,:].sum() + x[4,:].sum() + x[5,:].sum()== 53)
 
-    #m.addConstr(x[6,:].sum() == 8)
-    #m.addConstr(x[7,:].sum() == 9)
-    #m.addConstr(x[8,:].sum() == 11)
-    #m.addConstr(x[9,:].sum() == 9)
-    #m.addConstr(x[10,:].sum() == 9)
-    #m.addConstr(x[11,:].sum() == 11)
-    #m.addConstr(x[6,:].sum() + x[7,:].sum() + x[8,:].sum() + x[9,:].sum() + x[10,:].sum() + x[11,:].sum()== 58)
+    m.addConstr(x[6,:].sum() == 9)
+    m.addConstr(x[7,:].sum() == 11)
+    m.addConstr(x[8,:].sum() == 9)
+    m.addConstr(x[9,:].sum() == 11)
+    m.addConstr(x[10,:].sum() == 9)
+    m.addConstr(x[11,:].sum() == 9)
+    #m.addConstr(x[6,:].sum() + x[7,:].sum() + x[8,:].sum() +
+                #x[9,:].sum() + x[10,:].sum() + x[11,:].sum()== 58)
 
-    #m.addConstr(x[12,:].sum() == 10)
+    m.addConstr(x[12,:].sum() <= 9)
     #m.addConstr(x[13,:].sum() == 11)
     #m.addConstr(x[14,:].sum() == 9)
     #m.addConstr(x[15,:].sum() == 11)
     #m.addConstr(x[16,:].sum() == 9)
     #m.addConstr(x[17,:].sum() == 9)
-    #m.addConstr(x[12,:].sum() + x[13,:].sum() + x[14,:].sum() + x[15,:].sum() + x[16,:].sum() + x[17,:].sum()== 54)
+    m.addConstr(x[12,:].sum() + x[13,:].sum() + x[14,:].sum() +
+                x[15,:].sum() + x[16,:].sum() + x[17,:].sum()== 58)
+
+    m.addConstr(x[18,:].sum() <= 9)
+    #m.addConstr(x[19,:].sum() == 11)
+    #m.addConstr(x[20,:].sum() == 9)
+    #m.addConstr(x[21,:].sum() == 11)
+    #m.addConstr(x[22,:].sum() == 9)
+    #m.addConstr(x[23,:].sum() == 9)
+    m.addConstr(x[18,:].sum() + x[19,:].sum() + x[20,:].sum() +
+                x[21,:].sum() + x[22,:].sum() + x[23,:].sum()== 58)
+
+    m.addConstr(x[24,:].sum() <= 9)
+    #m.addConstr(x[25,:].sum() == 11)
+    #m.addConstr(x[26,:].sum() == 9)
+    #m.addConstr(x[27,:].sum() == 11)
+    #m.addConstr(x[28,:].sum() == 9)
+    #m.addConstr(x[29,:].sum() == 9)
+    m.addConstr(x[24,:].sum() + x[25,:].sum() + x[26,:].sum() +
+                x[27,:].sum() + x[28,:].sum() + x[29,:].sum()== 58)
+
+    m.addConstr(x[30,:].sum() <= 9)
+    #m.addConstr(x[31,:].sum() == 11)
+    #m.addConstr(x[32,:].sum() == 9)
+    #m.addConstr(x[33,:].sum() == 11)
+    #m.addConstr(x[34,:].sum() == 9)
+    #m.addConstr(x[35,:].sum() == 9)
+    m.addConstr(x[30,:].sum() + x[31,:].sum() + x[32,:].sum() +
+                x[33,:].sum() + x[34,:].sum() + x[35,:].sum()== 58)
+
+
 
 # trying tune the problem
     m.params.Threads = 8
