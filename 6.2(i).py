@@ -1,5 +1,4 @@
 import numpy as np; import scipy as sp; import networkx as nx;
-import matplotlib.pyplot as plt; import csv; import random; 
 import gurobipy as gp
 options = {
     "WLSACCESSID": "c213c390-45b2-4161-9e09-8bf82cb89f34",
@@ -35,12 +34,14 @@ with gp.Env(params=options) as env:
         m.addConstr(x[0,:] + x[i,:] <= jn) # These add disjointness of ind sets along the edges of wheel
         m.addConstr(x[i,:] + x[i+1,:] <= jn)
 
-    m.addConstr(x[1,:] + x[5,:] <= jn)
-    m.addConstr(x[0,:] + x[k-1,:])
-    m.addConstr(x[0,:].sum() == 10)
-    m.addConstr(x[1,:].sum() == 11)
+    m.addConstr(x[1,:] + x[k-1,:] <= jn)
+    m.addConstr(x[0,:] + x[k-1,:] <= jn)
+
+    # These next constraints allow finer control of ind sets, here is we include values which are specific to W_5^2
+    m.addConstr(x[0,:].sum() == 11)
+    #m.addConstr(x[1,:].sum() == 11)
     #m.addConstr(x[2,:].sum() == 9)
-    m.addConstr(x[3,:].sum() == 1)
+    #m.addConstr(x[3,:].sum() == 1)
     #m.addConstr(x[4,:].sum() == 10)
     #m.addConstr(x[5,:].sum() == 10)
 
