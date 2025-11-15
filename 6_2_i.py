@@ -30,7 +30,7 @@ with gp.Env(params=options) as env:
         m.addConstr(x[i,:].sum() <= alpha) # Auxillary constraint, but reduces search space
 
     
-    for i in range(1,k-2):
+    for i in range(1,k-1):
         m.addConstr(x[0,:] + x[i,:] <= jn) # These add disjointness of ind sets along the edges of wheel
         m.addConstr(x[i,:] + x[i+1,:] <= jn)
 
