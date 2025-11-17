@@ -1,3 +1,5 @@
+# This is fractional chromatic number of W_7^3. 
+
 import numpy as np; import scipy as sp; import networkx as nx;
 import matplotlib.pyplot as plt; import csv; import random; 
 import gurobipy as gp 
