@@ -16,7 +16,7 @@ def flatten_cartesian_product(G1, G2, G3):
     mapping = {node: (*node[0], node[1]) for node in G.nodes()}
     return nx.relabel_nodes(G, mapping)
 
-k = 8;
+k = 6;
 w = nx.wheel_graph(k);
 g = flatten_cartesian_product(w,w,w);
 
@@ -56,9 +56,7 @@ je2 = np.ones([1,e2]); jn2 = np.ones([1,n2]); h2 = np.zeros([1,n2]);
 je3 = np.ones([1,e3]); jn3 = np.ones([1,n3]); h3 = np.zeros([1,n3]);
 je4 = np.ones([1,e4]); jn4 = np.ones([1,n4]); h4 = np.zeros([1,n4]);
 
-#alpha1 = 1; alpha2 = 6; alpha3 = 30; alpha4 = 50; alpha = 58; # these are individual alphas and total alpha of W_5^3
-
-alpha1 = 1; alpha2 = 9; alpha3 = 63; alpha4 = 147; alpha = 156; # these are individual alphas and total alpha of W_7^3
+alpha1 = 1; alpha2 = 6; alpha3 = 30; alpha4 = 50; alpha = 58; # these are individual alphas and total alpha of W_5^3
 
 MPr= []; flag = 0;
 
