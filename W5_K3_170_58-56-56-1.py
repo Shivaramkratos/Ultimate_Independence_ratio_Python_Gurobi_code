@@ -4,9 +4,9 @@ import numpy as np; import scipy as sp; import networkx as nx;
 import matplotlib.pyplot as plt; import csv; import random; 
 import gurobipy as gp
 options = {
-    "WLSACCESSID": "c213c390-45b2-4161-9e09-8bf82cb89f34",
-    "WLSSECRET": "c1981d5a-9626-416b-b16d-9fd0c8d67764",
-    "LICENSEID": 2650983,
+    "WLSACCESSID": "-", # Enter Gurobi license details here, this assumes you have WLS license
+    "WLSSECRET": "-",
+    "LICENSEID": -,
 }
 from gurobipy import GRB
 
