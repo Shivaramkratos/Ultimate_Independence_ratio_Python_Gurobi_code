@@ -62,7 +62,7 @@ with gp.Env(params=options) as env:
     m.addConstr(x[5,:].sum() == 9)
     m.addConstr(x[0,:].sum() + x[1,:].sum() + x[2,:].sum() + x[3,:].sum() + x[4,:].sum() + x[5,:].sum()== 57)
 
-    #m.addConstr(x[6,:].sum() == 8)
+    m.addConstr(x[6,:].sum() == 9)
     #m.addConstr(x[7,:].sum() == 9)
     #m.addConstr(x[8,:].sum() == 11)
     #m.addConstr(x[9,:].sum() == 9)
@@ -70,7 +70,7 @@ with gp.Env(params=options) as env:
     #m.addConstr(x[11,:].sum() == 11)
     m.addConstr(x[6,:].sum() + x[7,:].sum() + x[8,:].sum() + x[9,:].sum() + x[10,:].sum() + x[11,:].sum()== 57)
 
-    #m.addConstr(x[12,:].sum() == 10)
+    m.addConstr(x[12,:].sum() == 8)
     #m.addConstr(x[13,:].sum() == 11)
     #m.addConstr(x[14,:].sum() == 9)
     #m.addConstr(x[15,:].sum() == 11)
